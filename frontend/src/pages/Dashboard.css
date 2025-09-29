@@ -1,0 +1,226 @@
+.page-layout {
+  display: flex;
+  justify-content: center; /* centers the whole flex container horizontally */
+  gap: 20px; /* space between columns */
+  padding: 20px;
+  height: 100vh; /* full viewport height */
+  box-sizing: border-box;
+}
+
+.left-sidebar,
+.right-sidebar {
+  flex: 1 1 200px; /* fixed minimum width */
+  max-width: 200px;
+  background-color: #f5f5f5; /* just for visualization */
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.right-section {
+  flex: 1 1 200px;
+  max-width: 200px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-sidebar {
+  margin-right: 10px;
+}
+
+.right-sidebar {
+  background-color: #f5f5f5;
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.main-content {
+  flex: 2 1 600px; /* bigger flex-grow to get most space */
+  max-width: 1000px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+/* Dashboard header with Previous and Logout buttons */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 0 20px 20px 20px;
+}
+
+.logout-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.previous-btn {
+  background-color: #dc3545 !important;
+  color: white !important;
+  border: 2px solid #c82333 !important;
+  border-radius: 5px !important;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+.previous-btn:hover {
+  background-color: #5a6268;
+  border-color: #343a40;
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+}
+
+.logout-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.page-header {
+  margin: 0;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.hot-picks-header {
+  display: flex;
+  justify-content: center;
+}
+
+/* Joined Discussions Styling */
+.refresh-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #28a745;
+}
+
+.refresh-btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.joined-discussions {
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.joined-discussions h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+}
+
+.joined-discussions p {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.joined-discussions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.discussion-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #495057;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.discussion-item:hover {
+  background-color: #e9ecef;
+  border-color: #007bff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.discussion-item:last-child {
+  margin-bottom: 0;
+}
+
+.discussion-text {
+  flex: 1;
+  margin-right: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leave-discussion-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.leave-discussion-btn:hover {
+  background-color: #dc3545;
+  color: white;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.discussion-item:hover .leave-discussion-btn {
+  opacity: 1;
+}

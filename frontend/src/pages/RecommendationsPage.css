@@ -1,0 +1,168 @@
+.recommendations-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.recommendations-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 50px; /* Account for sidebar width */
+  margin-right: 50px;
+}
+
+.recommendations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.recommendations-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.recommendations-header h1 {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.shuffle-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(108, 92, 231, 0.3);
+}
+
+.shuffle-button:hover {
+  background-color: #5649c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 92, 231, 0.4);
+}
+
+.shuffle-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(108, 92, 231, 0.3);
+}
+
+.shuffle-icon {
+  font-size: 1.2rem;
+}
+
+.recommendation-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(255, 152, 0, 0.3);
+}
+
+.recommendation-button:hover {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
+}
+
+.recommendation-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+}
+
+.recommendation-icon {
+  font-size: 1.2rem;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Animation for shuffling */
+@keyframes shuffle-animation {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.shuffling .book-card {
+  animation: shuffle-animation 0.5s ease-out;
+}
+
+.no-recommendations {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.no-recommendations p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.no-recommendations p:first-child {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .recommendations-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .recommendations-content h1 {
+    font-size: 2rem;
+  }
+
+  .recommendations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .no-recommendations {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .recommendations-content h1 {
+    font-size: 1.8rem;
+  }
+}

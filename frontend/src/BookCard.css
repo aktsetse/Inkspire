@@ -1,0 +1,160 @@
+.book-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 220px; /* Slightly wider for better content fit */
+  height: 470px; /* Consistent height for all cards */
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+  overflow: hidden; /* Prevent content overflow */
+  position: relative;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid blue;
+}
+
+.book-card img {
+  width: 100%;
+  height: 280px; /* Fixed image height */
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+/* Content area that fills remaining space */
+.book-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Fill remaining space */
+  padding: 12px 16px 8px 16px;
+  min-height: 0; /* Allow content to shrink if needed */
+  max-height: 140px; /* Ensure actions always have space */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.book-card .title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #333;
+  font-family: "Times New Roman", Times, serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 2.6em;
+  flex-shrink: 0;
+}
+
+.book-card .author {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom:0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+/* Card Actions positioned at bottom */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: auto; /* Push to bottom */
+  padding: 8px 16px 12px 16px;
+  flex-shrink: 0; /* Prevent shrinking */
+  min-height: 56px; /* Guarantee minimum space for actions */
+  align-items: center; /* Center the buttons vertically */
+}
+
+.favorite-btn,
+.watched-btn {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s, transform 0.1s;
+  position: relative;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn:hover,
+.watched-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #e74c3c;
+}
+
+.watched-btn.active {
+  color: #27ae60;
+}
+
+/* Custom tooltip styles */
+.favorite-btn::after,
+.watched-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.favorite-btn:hover::after,
+.watched-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-actions {
+    gap: 5px;
+  }
+
+  .favorite-btn,
+  .watched-btn {
+    min-width: 35px;
+    min-height: 35px;
+    font-size: 1em;
+  }
+}

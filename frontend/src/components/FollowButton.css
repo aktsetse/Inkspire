@@ -1,0 +1,125 @@
+.follow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  margin-left: 8px;
+}
+
+.follow-button:hover {
+  background-color: #0069d9;
+}
+
+.follow-button.following {
+  background-color: #e9ecef;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+
+.follow-button.following:hover {
+  background-color: #f8d7da;
+  color: #dc3545;
+  border-color: #f5c6cb;
+}
+
+.follow-icon {
+  margin-right: 4px;
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Styles for the follow button in message bubbles */
+.message-bubble .follow-button {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  margin-left: 6px;
+}
+
+.message-bubble .follow-icon {
+  font-size: 0.8rem;
+}
+
+.message-bubble .loading-spinner {
+  width: 10px;
+  height: 10px;
+}
+
+/* Styles for the user profile popup */
+.user-profile-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  min-width: 200px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.user-profile-popup .user-info {
+  margin-bottom: 10px;
+}
+
+.user-profile-popup .user-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.user-profile-popup .user-email {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+.user-profile-popup .user-bio {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+.user-profile-popup .follow-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+
+.user-profile-popup .follow-count {
+  color: #6c757d;
+}
+
+.user-profile-popup .follow-count span {
+  font-weight: 600;
+  color: #212529;
+}
+
+.user-profile-popup .follow-button {
+  width: 100%;
+  margin-left: 0;
+}

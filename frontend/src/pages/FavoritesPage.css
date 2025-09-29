@@ -1,0 +1,197 @@
+.favorites-page {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sidebar-container {
+  flex: 0 0 250px;
+}
+
+.favorites-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 50px; /* Account for sidebar width */
+  margin-right: 50px;
+}
+
+.favorites-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e74c3c;
+}
+
+.favorites-header h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.favorites-header p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+.no-user-message,
+.loading-message {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+.favorites-previous {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.no-user-message p,
+.loading-message p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.no-favorites-message {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  margin: 40px 0;
+}
+
+.no-favorites-message h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.no-favorites-message p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.browse-books-btn {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.browse-books-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+.browse-books-btn:active {
+  transform: translateY(0);
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+/* Loading animation */
+.loading-message {
+  position: relative;
+}
+
+.loading-message::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 60%;
+  transform: translateX(50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #e74c3c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateX(50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(50%) rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .favorites-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .favorites-header h1 {
+    font-size: 2rem;
+  }
+
+  .favorites-header p {
+    font-size: 1rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .no-favorites-message {
+    padding: 60px 15px;
+  }
+
+  .no-favorites-message h2 {
+    font-size: 1.5rem;
+  }
+
+  .no-favorites-message p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+
+  .favorites-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .browse-books-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ensure book cards look good in the grid */
+.favorites-grid .book-card {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0;
+}

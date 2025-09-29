@@ -1,0 +1,84 @@
+.user-profile-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  min-width: 250px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.user-profile-popup .user-info {
+  margin-bottom: 15px;
+}
+
+.user-profile-popup .user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #343a40;
+}
+
+.user-profile-popup .user-email {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.user-profile-popup .user-bio {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: #495057;
+  line-height: 1.4;
+  border-left: 3px solid #e9ecef;
+  padding-left: 10px;
+}
+
+.user-profile-popup .follow-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.user-profile-popup .follow-count {
+  color: #6c757d;
+}
+
+.user-profile-popup .follow-count span {
+  font-weight: 600;
+  color: #212529;
+  margin-right: 3px;
+}
+
+.user-profile-popup .follow-button {
+  width: 100%;
+  margin-left: 0;
+  justify-content: center;
+}
+
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.loading-spinner-large {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #007bff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
