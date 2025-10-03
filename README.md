@@ -1,4 +1,4 @@
-# StoryStack — Full-Stack Book Discovery & Discussion App
+# Inkspire — Full-Stack Book Discovery & Discussion App
 
 **StoryStack** is a full-stack social platform designed for book lovers to connect, share, and discuss their passion for literature. The platform enables users to post reviews, recommend books, join book clubs,  and engage in discussions with readers with similar interests.
 
