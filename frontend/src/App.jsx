@@ -185,33 +185,38 @@ const AuthProvider = ({ children }) => {
   const createUserProfile = async (authUser) => {
     try {
       // Check if user profile already exists in your database using the correct endpoint
-      const response = await fetch(`/api/users/supabase/${authUser.id}`);
+      const response = await fetch(`${window.location.origin}/api/users/supabase/${authUser.id}`);
 
       if (!response.ok) {
-        // User doesn't exist, create profile
-        const createResponse = await fetch("/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            supabase_id: authUser.id,
-            email: authUser.email,
-            first_name: authUser.user_metadata?.first_name || "",
-            last_name: authUser.user_metadata?.last_name || "",
-          }),
-        });
+        if (response.status === 404) {
+          // User doesn't exist, create profile
+          const createResponse = await fetch(`${window.location.origin}/api/users`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              supabase_id: authUser.id,
+              email: authUser.email,
+              first_name: authUser.user_metadata?.first_name || authUser.user_metadata?.name?.split(' ')[0] || "",
+              last_name: authUser.user_metadata?.last_name || authUser.user_metadata?.name?.split(' ').slice(1).join(' ') || "",
+            }),
+          });
 
-        if (!createResponse.ok) {
-          console.error("Failed to create user profile");
+          if (!createResponse.ok) {
+            console.error("Failed to create user profile:", createResponse.status, createResponse.statusText);
+          } else {
+            console.log("User profile created successfully");
+          }
         } else {
-          console.log("User profile created successfully");
+          console.error("Failed to check user profile:", response.status, response.statusText);
         }
       } else {
         console.log("User profile already exists");
       }
     } catch (error) {
       console.error("Error creating user profile:", error);
+      // Don't throw error here as auth should still work even if profile creation fails
     }
   };
 
@@ -250,7 +255,7 @@ const FavoritesProvider = ({ children }) => {
       if (!session || !user) return;
 
       // First get the user's database ID
-      const userResponse = await fetch(`/api/users/supabase/${user.id}`);
+      const userResponse = await fetch(`${window.location.origin}/api/users/supabase/${user.id}`);
 
       if (!userResponse.ok) {
         console.error("Failed to get user data:", userResponse.status);
@@ -261,7 +266,7 @@ const FavoritesProvider = ({ children }) => {
       const userId = userData.id; // Get the numeric database ID
 
       // Now fetch favorites with the correct ID
-      const response = await fetch(`/api/favorites/${userId}`);
+      const response = await fetch(`${window.location.origin}/api/favorites/${userId}`);
 
       if (response.ok) {
         const data = await response.json();
@@ -281,7 +286,7 @@ const FavoritesProvider = ({ children }) => {
       } = await supabase.auth.getSession();
       if (!session || !user) return { success: false };
 
-      const response = await fetch("/api/favorites", {
+      const response = await fetch(`${window.location.origin}/api/favorites`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -312,7 +317,7 @@ const FavoritesProvider = ({ children }) => {
       } = await supabase.auth.getSession();
       if (!session || !user) return { success: false };
 
-      const response = await fetch("/api/favorites", {
+      const response = await fetch(`${window.location.origin}/api/favorites`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

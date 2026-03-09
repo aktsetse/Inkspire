@@ -15,28 +15,48 @@ export default function SignIn() {
     setLoading(true);
     setError("");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
-    } else {
-      navigate("/dashboard");
+      if (error) {
+        setError(error.message);
+      } else if (data.user) {
+        // Clear any existing new account flag
+        localStorage.removeItem("isNewAccount");
+        navigate("/dashboard");
+      } else {
+        setError("Sign in failed. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      console.error("Sign in error:", err);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const handleGoogleLogin = async () => {
     setError("");
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:5173/dashboard",
-      },
-    });
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`,
+        },
+      });
+
+      if (error) {
+        setError(error.message);
+      }
+      // Note: OAuth redirects, so we don't navigate here
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      console.error("Google sign in error:", err);
+    }
   };
 
   return (

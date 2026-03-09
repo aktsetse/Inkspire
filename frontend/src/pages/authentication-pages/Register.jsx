@@ -16,41 +16,61 @@ function Register() {
     setError("");
     setSuccess("");
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: "http://localhost:5173/dashboard",
-      },
-    });
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/dashboard`,
+        },
+      });
 
-    if (error) {
-      setError(error.message);
-    } else {
-      // Set a flag to indicate this is a new account
-      localStorage.setItem("isNewAccount", "true");
-      setSuccess("Success! Check your email for the confirmation link.");
+      if (error) {
+        setError(error.message);
+      } else if (data.user) {
+        if (data.user.email_confirmed_at) {
+          // User is already confirmed (OAuth or instant signup)
+          localStorage.setItem("isNewAccount", "true");
+          navigate("/dashboard");
+        } else {
+          // Email confirmation required
+          setSuccess("Success! Check your email for the confirmation link to complete your registration.");
+        }
+      } else {
+        setError("Registration failed. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      console.error("Registration error:", err);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const handleGoogleSignUp = async () => {
     setError("");
+    setSuccess("");
 
-    // Set a flag to indicate this is a new account
-    localStorage.setItem("isNewAccount", "true");
+    try {
+      // Set a flag to indicate this is a new account
+      localStorage.setItem("isNewAccount", "true");
 
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:5173/dashboard",
-      },
-    });
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`,
+        },
+      });
 
-    if (error) {
-      setError(error.message);
-      // Remove the flag if there was an error
+      if (error) {
+        setError(error.message);
+        // Remove the flag if there was an error
+        localStorage.removeItem("isNewAccount");
+      }
+      // Note: OAuth redirects, so we don't set success message here
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      console.error("Google sign up error:", err);
       localStorage.removeItem("isNewAccount");
     }
   };
