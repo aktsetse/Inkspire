@@ -43,7 +43,7 @@ app.use("/api/celebrities", celebritiesRoutes);
 
 // Default route
 app.get("/", (_req, res) => {
-  res.send("Welcome to StoryStack API");
+  res.send("Welcome to Inkspire API");
 });
 
 // Function to check for new book releases and notify users
