@@ -26,7 +26,11 @@ function Register() {
       });
 
       if (error) {
-        setError(error.message);
+        if (error.message === "Supabase not configured") {
+          setError("Authentication is not configured. Please check your environment variables.");
+        } else {
+          setError(error.message);
+        }
       } else if (data.user) {
         if (data.user.email_confirmed_at) {
           // User is already confirmed (OAuth or instant signup)
@@ -40,8 +44,12 @@ function Register() {
         setError("Registration failed. Please try again.");
       }
     } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
-      console.error("Registration error:", err);
+      if (err.message === "Supabase not configured") {
+        setError("Authentication is not configured. Please check your environment variables.");
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+        console.error("Registration error:", err);
+      }
     } finally {
       setLoading(false);
     }
