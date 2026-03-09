@@ -43,7 +43,7 @@ export default function SignIn() {
     <div className="signin-container">
       <div className="signin-header">
         <h1>Welcome Back</h1>
-        <p>Sign in to your StoryStack account</p>
+        <p>Sign in to your Inkspire account</p>
       </div>
 
       {error && <div className="error-message">{error}</div>}

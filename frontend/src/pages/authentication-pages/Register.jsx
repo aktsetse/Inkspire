@@ -58,7 +58,7 @@ function Register() {
   return (
     <div className="register-container">
       <div className="register-header">
-        <h1>Join StoryStack</h1>
+        <h1>Join Inkspire</h1>
         <p>Create your account and start your reading journey</p>
       </div>
 

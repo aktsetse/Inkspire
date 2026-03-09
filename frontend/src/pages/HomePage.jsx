@@ -2,14 +2,14 @@ import "./HomePage.css"
 function HomePage(){
     return(
         <div className="homepage">
-            <h1>StoryStack</h1>
+            <h1>Inkspire</h1>
             <div className="header">
-             <h2> Welcome to StoryStack </h2>
+             <h2> Welcome to Inkspire </h2>
              <p> A place to discover, discuss, and share your favorite books </p>
              </div>
                  <div className="homepage-info">
                     <p>Discover your next favorite read, share your thoughts, and join conversations that matter. </p>
-                    With StoryStack, you can:
+                    With Inkspire, you can:
 
                      <ul>
                         <li>🔍 Search books from around the world</li>
